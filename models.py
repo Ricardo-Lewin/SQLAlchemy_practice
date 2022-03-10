@@ -15,6 +15,18 @@ class Pet(db.Model):
 
     __tablename__ = "pets"
 
+    id = db.Column(db.Integer,
+                   primary_key=True,
+                   autoincrement=True)
+
+    name = db.Column(db.String(50),
+                     nullable=False,
+                     unique=True)
+
+    species = db.Column(db.String(30), nullable=True)
+
+    hunger = db.Column(db.Integer, nullable=False, default=20)
+
     @classmethod
     def get_by_species(cls, species):
         """Get all pets matching that color."""
@@ -32,20 +44,8 @@ class Pet(db.Model):
 
         return f"I'm {self.name} the {self.species or 'thing'}"
 
-    def feed(self, units=10):
+    def feed(self, units=20):
         """Update hunger value"""
 
         self.hunger -= units
         self.hunger = max(self.hunger, 0)
-
-    id = db.Column(db.Integer,
-                   primary_key=True,
-                   autoincrement=True)
-
-    name = db.Column(db.String(50),
-                     nullable=False,
-                     unique=True)
-
-    species = db.Column(db.String(30), nullable=True)
-
-    hunger = db.Column(db.Integer, nullable=False, default=20)

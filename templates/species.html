@@ -10,7 +10,7 @@
     <h1>Pets of Species: {{species}}</h1>
     <ul>
       {% for pet in pets %}
-      <li><a href="{{pet.id}}">{{pet.name}}</a></li>
+      <li><a href="/{{pet.id}}">{{pet.name}}</a></li>
       {% endfor %}
     </ul>
     <a href="/">Back to all pets</a>

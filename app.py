@@ -33,7 +33,7 @@ def add_pet():
     pet = Pet(name=name, species=species, hunger=hunger)
     db.session.add(pet)
     db.session.commit()
-    return redirect(f'{pet.id}')
+    return redirect(f'/{pet.id}')
 
 
 @app.route('/<int:pet_id>')
